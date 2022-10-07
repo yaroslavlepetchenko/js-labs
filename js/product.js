@@ -11,6 +11,87 @@ function AbstractProduct(id, name, description, price, quantity, date){
         reviews : [],
         images: [],
 
+        getProductTileHtml : function(){
+        
+            var li = document.createElement('li')
+            var div = document.createElement('div')
+            div.className = 'product-overlay'
+            var a = document.createElement('a')
+            a.href = "#"
+            var img = document.createElement('img')
+            img.src = ""//"http://placehold.it/225/cccccc/0000&amp;text=I" //this.getImage(0)
+            img.alt = this.name
+            img.width = "225"
+            img.height = "225"
+            a.appendChild(img)
+            var div2 = document.createElement('div')
+            div2.className = "img-overlay"
+            var a2 = document.createElement('a')
+            a2.href = "#"
+            a2.title = this.name
+            var div3 = document.createElement('div')
+            div3.className = "img-overlay-area"
+            var h2 = document.createElement('h2')
+            h2.className = "heading"
+            h2.innerHTML = this.name
+            div3.appendChild(h2)
+            var div4 = document.createElement('div')
+            div4.className = "heading-holder"
+            var strong = document.createElement('strong')
+            strong.className = "price"
+            var div5 = document.createElement('div')
+            div5.className = "price-box"
+            var span = document.createElement('span')
+            span.className = "regular-price"
+            var span2 = document.createElement('span')
+            span2.className = "price"
+            span2.innerHTML = "$" + this.price
+            span.appendChild(span2)
+            div5.appendChild(span)
+            strong.appendChild(div5)
+            div4.appendChild(strong)
+            var div6 = document.createElement('div')
+            div6.className = "overlay-txt"
+            div3.appendChild(div6)
+            div3.appendChild(div4)
+            a2.appendChild(div3)
+            div2.appendChild(a2)
+            var div7 = document.createElement('div')
+            div7.className = "holder"
+            var a3 = document.createElement('a')
+            a3.className = "quick-view"
+            a3.rel = "nofollow"
+            a3.href = "#"
+            a3.innerHTML = "Quickview"
+            div7.appendChild(a3)
+            div2.appendChild(div7)
+            div.appendChild(div2)
+
+            var h3 = document.createElement('h3')
+            h3.className = "product-name"
+            var a4 = document.createElement('a')
+            a4.href = "#"
+            a4.innerHTML = this.name
+            h3.appendChild(a4)
+
+            var div8 = document.createElement('div')
+            div8.className = "price-box"
+            var span = document.createElement('span')
+            span.className = "regular-price"
+            var span2 = document.createElement('span')
+            span2.className = "price"
+            span2.innerHTML = "$" + this.price
+            span.appendChild(span2)
+            div8.appendChild(span)
+
+            li.appendChild(div)
+            li.appendChild(h3)
+            li.appendChild(div8)
+            
+            var ul = document.querySelector('.product-grid')
+            ul.appendChild(li)
+        },
+
         getSet : function(mode, field, ifSet){
             //mode : get or set
             //field : field to work with
@@ -210,6 +291,7 @@ function Review(id, author, date, comment, rating){
 
 function SearchProducts(search, products){
     var result = []
+    console.log("Search by: " + search)
     if(search.endsWith('*')){
         var newSearch = search.replace('*', '')
         for(var i = 0; i<products.length; i++){
@@ -303,6 +385,26 @@ var sortRule = {
     field : "price" //id, name, price for selected field
 }
 
+function Validator(){
+    return {
+        ValidateEmail : function(email){
+            var regex = new RegExp(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*){2,20}|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\]){1,15}|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)
+            var result = regex.test(String(email))
+            return result
+        },
+        ValidatePhone : function(phone){
+            var regex = new RegExp(/^\+?([0-9]{2})?[- ]*\(?([0-9]{3})\)?[- ]?([0-9]{3})[- ]?([0-9]{4})$/)
+            var result = regex.test(String(phone))
+            return result
+        },
+        ValidatePassword : function(password){
+            var regex = new RegExp(/^(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9_]{6,16}$/)  
+            var result = regex.test(String(password))
+            return result
+        }
+    }
+}
+
 /*var product1 = new Product(0, "pants", "some description", 100.50, "trussardi", "XL", 10, 10-10-2020)
 var product2 = new Product(1, "shirt", "another description", 50.50, "lacoste", "XL", 10, 10-10-2020)
 var product3 = new Product(2, "blazer", "blazers description", 260.99, "brioni", "XL", 5, 10-10-2020)
@@ -324,3 +426,13 @@ var prodArr = [tv, shirt, pants]
 console.log(SearchProducts('TV', prodArr))
 console.log(SortProducts(prodArr, sortRule))
 console.log(pants.getFullInformation())
+
+var validator = new Validator()
+var email = "fi@secondart.end"
+var phone = "+380995678901"
+var password = "C00l_Pass"
+console.log(validator.ValidateEmail(email))
+console.log(validator.ValidatePhone(phone))
+console.log(validator.ValidatePassword(password))
+
+pants.getProductTileHtml()
