@@ -1,0 +1,44 @@
+[
+    {
+        "id" : "0",
+        "name" : "jeans",
+        "description" : "this jeans description",
+        "price" : "99.99",
+        "quantity" : "4",
+        "date" : "05-10-2021",
+        "reviews" : [],
+        "images" : [],
+        "material" : "cotton",
+        "brand" : "lewis",
+        "sizes" : ["L", "XL", "XXl"],
+        "activeSize" : "XL"
+    }, 
+    {
+        "id" : "1",
+        "name" : "polo shirt",
+        "description" : "this shirts description",
+        "price" : "39.99",
+        "quantity" : "12",
+        "date" : "21-08-2022",
+        "reviews" : [],
+        "images" : [],
+        "material" : "cotton",
+        "brand" : "ralph lauren",
+        "sizes" : ["L", "XL", "XXl"],
+        "activeSize" : "XL"
+    },
+    {
+        "id" : "2",
+        "name" : "shoes",
+        "description" : "this shoes description",
+        "price" : "159.99",
+        "quantity" : "8",
+        "date" : "11-09-2020",
+        "reviews" : [],
+        "images" : [],
+        "material" : "leather",
+        "brand" : "adidas",
+        "sizes" : ["L", "XL", "XXl"],
+        "activeSize" : "XL"
+    }
+]

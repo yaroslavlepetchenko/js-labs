@@ -5,11 +5,48 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product</title>
+    <style> 
+        body {
+        background-color:aliceblue;
+        }
+        form {
+        width:400px;
+        margin:auto;
+        margin-top: 50px;
+        }
+        input{
+        padding:4px 10px;
+        border:0;
+        font-size:16px;
+        }
+        #search {
+        width: 75%;
+        border: #1c87c9 2px solid;
+        }
+        .search{
+        width: 70px;
+        background-color: #1c87c9;
+        color:#ffffff;
+        }
+      </style>
 </head>
 <body>
+    <form id="search_mini_form" onsubmit="event.preventDefault()"> 
+        <input type="text" name="text" id="search" placeholder="Search">
+        <input type="submit" name="submit" class="search" value="Search">
+    </form>
+    <span id="error-text" style="color: red;"></span>
+    <hr>
+    <br>
+    <label for="fields">Select field to sort</label>
+    <select name="fields" id="fields"></select>
+    <label for="order">Order by</label>
+    <select name="order" id="order"></select>
+
         <ul class="product-grid">
             
         </ul>
+    <script src="./js/jquery-3.6.1.js"></script>
     <script src="./js/product.js"></script>
 </body>
 </html>
